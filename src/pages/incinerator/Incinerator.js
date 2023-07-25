@@ -1,10 +1,10 @@
 import React from "react";
 import Slidebar from "../../components/slidebar/Slidebar";
-import InciHeadline from "../../components/layout/inciHeadline"
+import InciHeadline from "../../components/layout/inciHeadline";
 import burnvid from "../../assets/videos/burnvid.mp4";
 import { useStateContext } from "../../context";
 const Incinerator = () => {
-  const {showNav}=useStateContext();
+  const { showNav } = useStateContext();
   const gData = [
     {
       heading1: "ENTER FELIX AMOUNT TO BURN",
@@ -16,14 +16,19 @@ const Incinerator = () => {
     },
   ];
   return (
-    <><InciHeadline/>
+    <>
+      <InciHeadline />
       <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center  ">
         <div className="flex flex-col lg:flex-row w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 ">
           <div className="lg:w-[18%]  ">
             <Slidebar />
           </div>
 
-          <div className={`${showNav ? "hidden" : "flex"} md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] lg:w-[70%]`}>
+          <div
+            className={`${
+              showNav ? "hidden" : "flex"
+            } md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] lg:w-[70%]`}
+          >
             <div className="flex flex-col px-5  w-[100%] lg:w-[50%]">
               <div className="grid  grid-flow-row grid-cols-1 ">
                 {gData.slice(0, 1).map((item, index) => (
@@ -42,13 +47,13 @@ const Incinerator = () => {
                         autoComplete="off"
                       ></input>
                       <div className="flex   lg:w-[22%] justify-between">
-                      <button className="border-2 border-white hover:bg-white hover:text-black px-1 rounded-md  lg:text-lg font-extrabold ">
-                        {" "}
-                        BURN
-                      </button>
-                      <div className="flex lg:hidden ">
-                      <h1 className="text-lg font-extrabold">$ 0</h1>
-                    </div>
+                        <button className="border-2 border-white hover:bg-white hover:text-black px-1 rounded-md  lg:text-lg font-extrabold ">
+                          {" "}
+                          BURN
+                        </button>
+                        <div className="flex lg:hidden ">
+                          <h1 className="text-lg font-extrabold">$ 0</h1>
+                        </div>
                       </div>
                     </div>
                     <div className="lg:flex hidden ">

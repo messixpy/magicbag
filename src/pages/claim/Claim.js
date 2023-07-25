@@ -56,7 +56,7 @@ const Claim = () => {
             <Slidebar />
           </div>
 
-          <div className={`${showNav ? "hidden" : "flex"} md:border-2 md:p-[0.2rem] md:border-white md:rounded-md w-[100%] lg:w-[70%]`}>
+          <div className={`${showNav ? "hidden" : "flex"} md:border-2 md:p-[0.2rem] md:border-white md:rounded-md w-[100%] lg:w-[70%] `}>
             <div className="flex flex-col px-5 w-[100%] lg:w-[50%]">
               <div className="flex justify-normal gap-3 bg-transparent font-extrabold text-xl text-gray-600">
                 <button

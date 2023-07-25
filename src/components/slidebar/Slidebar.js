@@ -55,13 +55,13 @@ const Slidebar = ({ children }) => {
           </NavLink>
         ))}
         <main>{children}</main>
-        <div className="flex w-[20%] gap-2 items-end justify-start">
+        <div className="flex w-[20%] lg:w-[100%] gap-2 items-end justify-start">
           <a
             href="https://twitter.com/MagicBagERC"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={twitter} alt="twitter" className="cursor-pointer" />
+            <img src={twitter} alt="twitter" className="cursor-pointer " />
           </a>
           <a
             href="https://t.me/MagicBagERC"
