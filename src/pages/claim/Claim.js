@@ -100,13 +100,13 @@ const Claim = () => {
                     {gData.slice(1, 5).map((item, index) => (
                       <div
                         key={index}
-                        className="  items-start border-solid  hover:text-black text-white hover:bg-white border rounded-lg bg-transparent border-white p-2 my-1 w-[100%] lg:w-[70%]"
+                        className="  items-start border-solid  group text-white hover:bg-white border rounded-lg bg-transparent border-white p-2 my-1 w-[100%] lg:w-[70%]"
                       >
-                        <div className="flex justify-start  boxText ">
+                        <div className="flex justify-start  boxText group-hover:text-black">
                           {item.heading1}
                         </div>
-                        <div className="text-lg ">{item.price1}</div>
-                        <div className="text-lg ">{item.price}</div>
+                        <div className="text-lg group-hover:text-black">{item.price1}</div>
+                        <div className="text-lg group-hover:text-black">{item.price}</div>
                       </div>
                     ))}
                   </div></>
@@ -118,14 +118,15 @@ const Claim = () => {
                     key={index}
                     className="  items-start border-solid gap-1  text-white md:border  md:rounded-xl bg-transparent md:border-white p-1 my-1 "
                   >
-                    <div className="flex justify-start mb-1 boxText ">
+                    <div className="flex justify-start mb-1 boxText p-1 ">
                       {item.heading2}
                     </div>
                     <div className=" flex lg:flex-row flex-col  gap-3 ">
                       <input
                         type="number"
+                        
                         placeholder="Amount "
-                        className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-10"
+                        className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white h-10 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         autoComplete="off"
                       ></input>
                       <div className="flex   lg:w-[28%] justify-between">
@@ -149,13 +150,13 @@ const Claim = () => {
                   {gData.slice(1, 5).map((item, index) => (
                     <div
                       key={index}
-                      className="  items-start border-solid  hover:text-black text-white hover:bg-white border rounded-lg bg-transparent border-white p-2 my-1 w-[100%] "
+                      className="  items-start border-solid  group text-white hover:bg-white border rounded-lg bg-transparent border-white p-2 my-1 w-[100%] "
                     >
-                      <div className="flex justify-start  boxText ">
+                      <div className="flex justify-start  boxText group-hover:text-black ">
                         {item.heading1}
                       </div>
-                      <div className="text-lg ">{item.price1}</div>
-                      <div className="text-lg ">{item.price}</div>
+                      <div className="text-md group-hover:text-black ">{item.price1}</div>
+                      <div className="text-md group-hover:text-black">{item.price}</div>
                     </div>
                   ))}
                 </div></>

@@ -38,7 +38,7 @@ const Incinerator = () => {
                       <input
                         type="number"
                         placeholder="Amount "
-                        className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-14"
+                        className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-14 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         autoComplete="off"
                       ></input>
                       <div className="flex   lg:w-[22%] justify-between">
