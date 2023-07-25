@@ -1,13 +1,373 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #fff;
+  --cyan: #22ddd2;
+  --body-light: #515151;
+  --dark-gray: #2c323d;
+  --black: #000000;
+  --bg-black: #0b0b0b;
+  --light-theme-blue: #2e73ea;
+  --purple: #ad00ff;
+  --gradient-purple: linear-gradient(
+    88deg,
+    var(--purple) 3.38%,
+    var(--light-theme-blue) 90.79%
+  );
+  --gradient-blue-cyan: linear-gradient(
+    88deg,
+    var(--light-theme-blue) 3.38%,
+    var(--cyan) 90.79%
+  );
+  /* --nav-bg: #000000; */
+  --nav-bg: rgba(217, 217, 217, 0.1);
+}
+html.dark {
+  --nav-bg: rgba(217, 217, 217, 0.1);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-lato);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.text-cyan {
+  color: var(--cyan);
+}
+.text-blue {
+  color: var(--light-theme-blue);
+}
+.text-purple {
+  color: var(--purple);
+}
+.text-gradient-purple {
+  background: var(--gradient-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-blue-cyan {
+  background: var(--gradient-blue-cyan);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.border-cyan {
+  border-color: var(--cyan);
+}
+.border-purple {
+  border-color: var(--purple);
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+}
+
+.bg-gradient-purple {
+  background: var(--gradient-purple);
+}
+.bg-black {
+  background: var(--bg-black);
+}
+
+.dark body {
+  background-color: var(--bg-black);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--black);
+  overflow-x: hidden;
+  height: 100vh; /* Set the body height to fill the viewport */
+  font-family: "Montserrat";
+  position: relative; /* Make the body a positioned container for the pseudo-element */
+}
+body::after {
+  content: ""; /* Required for the pseudo-element to appear */
+  background: url("../src/assets/videos/background.gif");
+  opacity: 0.15; /* Set the desired opacity value (0.5 means 50% opacity) */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Move the pseudo-element below the body's content */
+}
+
+.active {
+  color: #fed039;
+}
+/*Mobile View*/
+@media (min-width: 288px) and (max-width: 767px) {
+  .subHeadingText {
+    color: #fed039;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 14px;
+  }
+  .mainSubHeading {
+    color: #fff;
+    text-shadow: 4px 4px 0px 0px #000;
+    font-family: "Shelf Life", sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    
+  }
+  .mainSubHeading:hover {
+    color: #edc33b;
+  }
+  .boxText {
+    color: #edc33b;
+    font-family: Montserrat;
+    font-size: 14x;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+  }
+}
+/*iPad Mini*/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .subHeadingText {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 14px;
+  }
+  .mainSubHeading {
+    color: #fff;
+    text-shadow: 4px 4px 0px 0px #000;
+    font-family: Montserrat;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 900;
+    
+  }
+  .mainSubHeading:hover {
+    color: #edc33b;
+  }
+  .boxText {
+    color: #edc33b;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+  }
+}
+/*iPad Pro*/
+@media (min-width: 1024px) and (max-width: 1136px) {
+  .subHeadingText {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 14px;
+  }
+  .mainSubHeading {
+    color: #fff;
+    text-shadow: 4px 4px 0px 0px #000;
+    font-family: "Shelf Life", sans-serif;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 900;
+   
+  }
+  .mainSubHeading:hover {
+    color: #edc33b;
+  }
+  .boxText {
+    color: #edc33b;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+  }
+  
+}
+/*Laptop*/
+@media (min-width: 1136px) {
+  .subHeadingText {
+    color: #fff;
+
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 14px;
+  }
+  .mainSubHeading {
+    color: #fff;
+    text-shadow: 4px 4px 0px 0px #000;
+    font-family: "Shelf Life", sans-serif;
+
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 900;
+    
+  }
+  .mainSubHeading:hover {
+    color: #edc33b;
+  }
+
+  .boxText {
+    color: #edc33b;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 13px;
+  }
+
+/* .boxText:hover {
+  color: #0000;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 13px;
+} */
+}
+
+/* @media screen and (max-wdith: 767px) {
+  .pcountdown {
+    width: 40px;
+  }
+} */
+@media (min-width: 768px) {
+  .pcountdown {
+    padding: 30px 20px 27px 20px;
+    margin-bottom: 0.5rem;
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+  }
+  .single-entity {
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+}
+
+/* {Animations of INFINITY} */
+.heroLeftSection {
+  animation: fadeRight 1s ease-in-out 1;
+}
+.heroRightSection {
+  animation: fadeLeft 1s ease-in-out 1;
+}
+@keyframes fadeRight {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*------------------------
+	slidefadeinup
+--------------------------*/
+
+@-webkit-keyframes slideFadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20%, 0);
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes slideFadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 20%, 0);
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.slideFadeInUp {
+  -webkit-animation-name: slideFadeInUp;
+  animation-name: slideFadeInUp;
+  animation: slideFadeInUp 2s;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.dark table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000; /* Add this line to create a vertical line between columns */
+}
+
+.dark th {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd; /* Add this line to create a vertical line between columns */
+}
+
+.dark td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd; /* Add this line to create a vertical line between columns */
+}
+th {
+  background-color: transparent;
+}
+th:last-child,
+td:last-child {
+  border-right: none; /* Remove the right border on the last column */
+}
+@media only screen and (max-width: 600px) {
+  table {
+    font-size: 14px;
+    overflow-x: auto;
+  }
 }
