@@ -9,6 +9,7 @@ import { useStateContext } from "../../context";
 
 const Slidebar = ({ children }) => {
   //   const { openMenu } = useStateContext();
+  
   const {showNav}=useStateContext();
 
   const menuItem = [
