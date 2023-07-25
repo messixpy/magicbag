@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 import dashhead from "../../assets/images/dashhead.gif";
 
 const StakingHeadline = () => {
-  const texts = ["STAKING", "MAGIC BAG", "STAKING", "MAGIC BAG", "STAKING", "MAGIC BAG"];
+  const texts = ["STAKING", "MAGIC BAG", "STAKING", "MAGIC BAG", "STAKING", "MAGIC BAG", "STAKING", "MAGIC BAG", "STAKING", "MAGIC BAG"];
 
   return (
     <div className="w-[100%] mx-auto max-w-[1440px] py-2 px-8 flex items-center justify-center flex-col xl:px-10 ">

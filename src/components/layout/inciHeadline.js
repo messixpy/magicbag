@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 import dashhead from "../../assets/images/dashhead.gif";
 
 const inciHeadline = () => {
-  const texts = ["INCINERATOR", "MAGIC BAG", "INCINERATOR", "MAGIC BAG", "INCINERATOR", "MAGIC BAG"];
+  const texts = ["INCINERATOR", "MAGIC BAG", "INCINERATOR", "MAGIC BAG", "INCINERATOR", "MAGIC BAG", "INCINERATOR", "MAGIC BAG", "INCINERATOR", "MAGIC BAG"];
 
   return (
     <div className="w-[100%] mx-auto max-w-[1440px] py-2 px-8 flex items-center justify-center flex-col xl:px-10 ">
