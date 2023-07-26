@@ -1,7 +1,7 @@
 import React from "react";
 import Slidebar from "../../components/slidebar/Slidebar";
 import comingsoon from "../../assets/images/comingsoon.png";
-import treasury from "../../assets/videos/treasury.mov";
+import treasury from "../../assets/videos/treasury.webm";
 import TreasuryHeadline from "../../components/layout/treasuryHeadline";
 import { useStateContext } from "../../context";
 const Treasury = () => {

@@ -62,28 +62,28 @@ const Slidebar = ({ children }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={twitter} alt="twitter" className="cursor-pointer " />
+            <img src={twitter}  width={32} hight={32} alt="twitter" className=" object-cover  " />
           </a>
           <a
             href="https://t.me/MagicBagERC"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={teleg} alt="telegram" className="cursor-pointer" />
+            <img src={teleg} width={32} hight={32} alt="telegram" className=" object-cover " />
           </a>
           <a
             href="https://discord.gg/TWaRcjzS"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={discord} alt="discord" className="cursor-pointer" />
+            <img src={discord} width={32} hight={32} alt="discord" className=" object-cover " />
           </a>
           <a
             href="https://medium.com/@MagicBagERC"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={circle} alt="medium" className="cursor-pointer" />
+            <img src={circle} width={32} hight={32} alt="medium" className=" object-cover " />
           </a>
         </div>
       </div>

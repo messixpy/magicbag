@@ -1,7 +1,9 @@
 import React from "react";
 import Slidebar from "../../components/slidebar/Slidebar";
 import InciHeadline from "../../components/layout/inciHeadline";
-import burnvid from "../../assets/videos/burnvid.mp4";
+import burnvid from "../../assets/videos/burnvid.webm";
+import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/SkeletonLoadingVideo"; 
+
 import { useStateContext } from "../../context";
 const Incinerator = () => {
   const { showNav } = useStateContext();
@@ -81,6 +83,9 @@ const Incinerator = () => {
               </div>
             </div>
             <div className=" hidden lg:flex justify-center items-center  border border-white lg:ml-5 mt-1 h-fit w-[40%]">
+            {!burnvid ? (
+              <SkeletonLoadingVideo />
+            ) : (
               <video
                 src={burnvid}
                 width="700"
@@ -89,6 +94,7 @@ const Incinerator = () => {
                 autoPlay
                 loop
               />
+            )}
             </div>
           </div>
         </div>

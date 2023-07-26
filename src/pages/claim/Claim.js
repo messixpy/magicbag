@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Slidebar from "../../components/slidebar/Slidebar";
 import ClaimHeadline from "../../components/layout/claimHeadline";
 import ClaimButton from "../../components/buttons/ClaimButton";
-import claimvid from "../../assets/videos/claimvid.mp4";
+import claimvid from "../../assets/videos/claimvid.webm";
 import { useStateContext } from "../../context";
+import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/SkeletonLoadingVideo"; 
 import BigNumber from "bignumber.js";
 const Claim = () => {
   const [showUnclaimed, setShowUnclaimed] = useState(true);
@@ -163,6 +164,9 @@ const Claim = () => {
               )}
             </div>
             <div className="hidden lg:flex justify-center items-center border border-white h-fit mt-3 w-[41%]">
+            {!claimvid ? (
+              <SkeletonLoadingVideo />
+            ) : (
               <video
                 src={claimvid}
                 width="700"
@@ -171,6 +175,7 @@ const Claim = () => {
                 autoPlay
                 loop
               />
+              )}
             </div>
           </div>
         </div>
