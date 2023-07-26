@@ -32,7 +32,18 @@ const TreasuryHeadline = () => {
     }, 1000);
   }, []);
 
-  const texts = ["TREASURY", "MAGIC BAG", "TREASURY", "MAGIC BAG", "TREASURY", "MAGIC BAG", "TREASURY", "MAGIC BAG", "TREASURY", "MAGIC BAG"];
+  const texts = [
+    "TREASURY",
+    "MAGIC BAG",
+    "TREASURY",
+    "MAGIC BAG",
+    "TREASURY",
+    "MAGIC BAG",
+    "TREASURY",
+    "MAGIC BAG",
+    "TREASURY",
+    "MAGIC BAG",
+  ];
 
   if (isLoading) {
     return <SkeletonLoadingTreasuryHeadline />;
