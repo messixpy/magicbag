@@ -69,13 +69,13 @@ const Incinerator = () => {
                 {gData.slice(1, 2).map((item, index) => (
                   <div
                     key={index}
-                    className="  items-start border-solid gap-1 hover:text-black text-white hover:bg-white border rounded-xl bg-transparent border-white p-4 my-2  "
+                    className="  items-start border-solid gap-1 group text-white hover:bg-white border rounded-xl bg-transparent border-white p-4 my-2  "
                   >
-                    <div className="flex justify-start mb-2 boxText hover:text-black">
+                    <div className="flex justify-start mb-2 boxText group-hover:text-black">
                       {item.heading1}
                     </div>
-                    <div className="text-lg ">{item.price1}</div>
-                    <div className="text-lg ">{item.price}</div>
+                    <div className="text-lg group-hover:text-black ">{item.price1}</div>
+                    <div className="text-lg group-hover:text-black ">{item.price}</div>
                   </div>
                 ))}
               </div>
