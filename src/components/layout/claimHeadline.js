@@ -9,7 +9,7 @@ const SkeletonLoadingHeadline = () => {
 
   return (
     <div className="w-[100%] mx-auto max-w-[1440px] py-2 px-8 flex items-center justify-center flex-col xl:px-10 ">
-      <Marquee className="flex w-[90%] lg:h-[100px] px-0 border-2 border-white rounded-md items-center justify-center space-x-4">
+      <Marquee className="flex w-[90%] lg:h-[95px] px-0 border-2 border-white rounded-md items-center justify-center space-x-4">
         {skeletonItems.map((_, index) => (
           <div key={index} className="flex gap-3 items-center space-x-4">
             <div className="h-8 w-8 bg-gray-300 rounded-full"></div>
@@ -40,7 +40,7 @@ const ClaimHeadline = () => {
 
   return (
     <div className="w-[100%] mx-auto max-w-[1440px] py-2 px-8 flex items-center justify-center flex-col xl:px-10 ">
-      <Marquee className="flex w-[90%] lg:h-[100px] px-0 border-2 border-white rounded-md items-center justify-center space-x-4">
+      <Marquee className="flex w-[90%] lg:h-[95px] px-0 border-2 border-white rounded-md items-center justify-center space-x-4">
         {texts.map((text, index) => (
           <div key={index} className="flex gap-3 items-center space-x-4">
             <div></div>
