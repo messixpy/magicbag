@@ -17,10 +17,12 @@ const Dashboard = () => {
   const { showNav } = useStateContext();
 
 
+  console.log('circ supply is ',circulatingSupply)
 
   useEffect(() => {
     const getTotalCirculatingSupply = async () => {
       const circulatingCount = await getCirculatingSupply();
+      console.log('circulating count',circulatingCount)
       setCirculatingSupply(circulatingCount);
     };
 
@@ -63,19 +65,19 @@ const Dashboard = () => {
     },
     {
       heading1: "CIRC SUPPLY",
-      price: `${new BigNumber(circulatingSupply) / new BigNumber(10 ** 18)} FELIX`
+      price: `${circulatingSupply?(circulatingSupply /10 ** 18):0} FELIX`
     },
     {
       heading1: "TOTAL BURNED",
-      price: `${(new BigNumber(burned) / new BigNumber(10 ** 18)).toFixed(5)} FELIX`,
+      price: `${(burned?(burned) / (10 ** 18):0).toFixed(5)} FELIX`,
     },
     {
       heading1: "ADDED LP",
-      price: `${(new BigNumber(lp) / new BigNumber(10 ** 18)).toFixed(5)} FELIX`,
+      price: `${(lp? (lp / 10 ** 18):0).toFixed(5)} FELIX`,
     },
     {
       heading1: "TOTAL REFLECTIONS",
-      price: `${(new BigNumber(reflection)/new BigNumber(10**18)).toFixed(7)} ETH`,
+      price: `${(reflection?(reflection/10**18):0).toFixed(7)} ETH`,
     },
   ];
   return (

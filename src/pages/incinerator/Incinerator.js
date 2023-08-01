@@ -1,29 +1,124 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slidebar from "../../components/slidebar/Slidebar";
-import InciHeadline from "../../components/layout/inciHeadline"
+import InciHeadline from "../../components/layout/inciHeadline";
 import burnvid from "../../assets/videos/burnvid.mp4";
 import { useStateContext } from "../../context";
+import { useState } from "react";
 const Incinerator = () => {
-  const {showNav}=useStateContext();
+  const { showNav,decimals,publishBurn,address,felixDollarRate,ethDollarRate,getFelixBalance } = useStateContext();
+
+  const [inputValue, setInputValue] = useState(0);
+  const [loadingState, setLoadingState] = useState("");
+  const [felixBalance, setFelixBalance] = useState("");
+
+
+  const burnBtnClasses=   "border-2 border-white hover:bg-white hover:text-black px-1 rounded-md lg:text-lg font-extrabold ";
+
+  const disabledClass = inputValue==0 ? "opacity-50 cursor-not-allowed pointer-events-none" : "";
+
+
   const gData = [
     {
       heading1: "ENTER FELIX AMOUNT TO BURN",
     },
     {
       heading1: "FELIX BALANCE",
-      price1: "$ 229053.9",
-      price: "92125347.29257213 FELIX",
+      price1: `$ ${
+        address && felixDollarRate && ethDollarRate
+          ? (Number(felixDollarRate) * (felixBalance / 10 ** decimals)).toFixed(
+              9
+            )
+          : 0
+      }`,
+      price: `${
+        address && felixDollarRate && ethDollarRate
+          ? (felixBalance / 10 ** decimals).toFixed(5) + " FELIX"
+          : "0 FELIX"
+      }`,
     },
   ];
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+
+  const exponentialToDecimal = exponential => {
+    let decimal = exponential.toString().toLowerCase();
+    if (decimal.includes('e+')) {
+      const exponentialSplitted = decimal.split('e+');
+      let postfix = '';
+      for (
+        let i = 0;
+        i <
+        +exponentialSplitted[1] -
+          (exponentialSplitted[0].includes('.')
+            ? exponentialSplitted[0].split('.')[1].length
+            : 0);
+        i++
+      ) {
+        postfix += '0';
+      }
+      const addCommas = text => {
+        let j = 3;
+        let textLength = text.length;
+        while (j < textLength) {
+          text = `${text.slice(0, textLength - j)},${text.slice(
+            textLength - j,
+            textLength
+          )}`;
+          textLength++;
+          j += 3 + 1;
+        }
+        return text;
+      };
+      decimal = addCommas(exponentialSplitted[0].replace('.', '') + postfix);
+    }
+    if (decimal.toLowerCase().includes('e-')) {
+      const exponentialSplitted = decimal.split('e-');
+      let prefix = '0.';
+      for (let i = 0; i < +exponentialSplitted[1] - 1; i++) {
+        prefix += '0';
+      }
+      decimal = prefix + exponentialSplitted[0].replace('.', '');
+    }
+    return decimal.toString();
+  };
+
+  let approveAmount_new = parseFloat(inputValue) * 10 ** parseFloat(decimals);
+  let amountInWith = exponentialToDecimal(approveAmount_new);
+  let convertedNumTokens = amountInWith.replaceAll(',', '');
+
+  const burnTokens = async e => {
+    setLoadingState(true);
+
+    const data = await publishBurn(convertedNumTokens);
+    setLoadingState(false);
+  };
+
+
+  useEffect(()=>{
+    const getFelixBalanceCount = async () => {
+      const balanceCount = await getFelixBalance(address);
+      setFelixBalance(balanceCount);
+    };
+
+    getFelixBalanceCount()
+  },[getFelixBalance])
   return (
-    <><InciHeadline/>
+    <>
+      <InciHeadline />
       <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center  ">
         <div className="flex flex-col lg:flex-row w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 ">
           <div className="lg:w-[18%]  ">
             <Slidebar />
           </div>
 
-          <div className={`${showNav ? "hidden" : "flex"} md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] lg:w-[70%]`}>
+          <div
+            className={`${
+              showNav ? "hidden" : "flex"
+            } md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] lg:w-[70%]`}
+          >
             <div className="flex flex-col px-5  w-[100%] lg:w-[50%]">
               <div className="grid  grid-flow-row grid-cols-1 ">
                 {gData.slice(0, 1).map((item, index) => (
@@ -38,21 +133,22 @@ const Incinerator = () => {
                       <input
                         type="number"
                         placeholder="Amount "
+                        onChange={handleInputChange}
                         className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-14"
                         autoComplete="off"
                       ></input>
                       <div className="flex   lg:w-[22%] justify-between">
-                      <button className="border-2 border-white hover:bg-white hover:text-black px-1 rounded-md  lg:text-lg font-extrabold ">
-                        {" "}
-                        BURN
-                      </button>
-                      <div className="flex lg:hidden ">
-                      <h1 className="text-lg font-extrabold">$ 0</h1>
-                    </div>
+                        <button  disable={inputValue == 0 ? true : false} onClick={burnTokens} className={`${burnBtnClasses} ${disabledClass} `}>
+                          {" "}
+                          BURN
+                        </button>
+                        <div className="flex lg:hidden ">
+                          <h1 className="text-lg font-extrabold">{`$ ${inputValue?(Number(felixDollarRate)?.toFixed(11)*inputValue):0}`}</h1>
+                        </div>
                       </div>
                     </div>
                     <div className="lg:flex hidden ">
-                      <h1 className="text-lg font-extrabold">$ 0</h1>
+                      <h1 className="text-lg font-extrabold">{`$ ${inputValue?(Number(felixDollarRate)?.toFixed(11)*inputValue):0}`}</h1>
                     </div>
                   </div>
                 ))}

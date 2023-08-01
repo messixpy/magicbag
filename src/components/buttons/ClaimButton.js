@@ -1,11 +1,19 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-const ClaimButton = ({ label, variant,onClick }) => {
+const ClaimButton = ({ label, variant, onClick, isDisabled }) => {
   const btnVariantClass = getVariantClass(variant);
 
+  const disabledClass = isDisabled ? "opacity-50 cursor-not-allowed pointer-events-none" : "";
+
   return (
-    <button onClick={onClick} className={`${styles.button} ${btnVariantClass}`}>{label}</button>
+    <button
+      onClick={onClick}
+      disabled={isDisabled}
+      className={`${styles.button} ${btnVariantClass} ${disabledClass}`}
+    >
+      {label}
+    </button>
   );
 };
 

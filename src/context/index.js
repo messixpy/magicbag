@@ -1,21 +1,21 @@
 
 import { useContext, createContext, useState, useEffect } from "react";
 import Web3 from 'web3';
+import { useAccount, useContractWrite } from 'wagmi';
 import { ethers } from "ethers";
-import { useAccount } from 'wagmi';
 import contractABI from './contractABI';
 import reflectionABI from './reflectionABI';
 import { ToastContainer, toast } from 'react-toastify';
+import { useWalletClient } from "wagmi";
 
-
+import { usePrepareContractWrite } from 'wagmi'
 // Creating a new context
 const StateContext = createContext();
 
 
 export const StateContextProvider = ({ children }) => {
-
-
-  const web3 = new Web3(window.ethereum);
+  const { data: walletClient, isError, isLoading } = useWalletClient()
+  const web3 = new Web3(walletClient);
   const [chainId, setChainId] = useState(null);
 
   const [showNav, setShowNav] = useState(false);
@@ -40,6 +40,7 @@ const [ethDollarRate,setEthDollarRate]=useState(0)
   };
 
 
+ 
   const errorNotify = () => {
     toast.error('Customized Notification', {
       position: toast.POSITION.TOP_CENTER,
@@ -77,20 +78,24 @@ const [ethDollarRate,setEthDollarRate]=useState(0)
   const { address } = useAccount();
 
 
-
+console.log('address is ',address)
 
   const getDecimals = async () => {
     try {
       const result = await contractInstance.methods.decimals().call();
+      console.log('decimals',result)
       return result;
     } catch (error) {
       console.log(error);
     }
   };
 
+
+
   useEffect(() => {
     const getDecimalCount = async () => {
       const decimalCount = await getDecimals();
+      console.log('decimal count',decimalCount)
       setDecimals(decimalCount);
     };
 
@@ -98,6 +103,7 @@ const [ethDollarRate,setEthDollarRate]=useState(0)
   }, [])
 
 
+  
 console.log('decimals are',decimals)
   useEffect(() => {
     async function fetchFelixDollarRate() {
@@ -142,6 +148,15 @@ console.log('decimals are',decimals)
     fetchEthDollarRate()
   }, []);
 
+
+  const { config } = usePrepareContractWrite({
+    address: contractAddress,
+    abi: contractABI,
+    functionName: 'claimReflection',
+  })
+
+
+  const {write}=useContractWrite(config)
   const getBuyTax = async () => {
     try {
       const result = await contractInstance.methods.buyTax().call();
@@ -210,10 +225,13 @@ console.log('decimals are',decimals)
   const getCirculatingSupply = async () => {
     try {
       const result = await contractInstance.methods.totalSupply().call();
+      console.log('result circ supply',result)
 
       return result;
     } catch (error) {
       console.log(error);
+      console.log('error circ supply',error)
+
     }
   };
 
@@ -232,6 +250,8 @@ console.log('decimals are',decimals)
       const result = await contractInstance.methods
         .totalClaimedReflection(walletAddress)
         .call();
+
+        console.log('------------',result)
 
       return result;
     } catch (error) {
@@ -284,11 +304,11 @@ console.log('decimals are',decimals)
   useEffect(() => {
     async function getChainId() {
       if (window.ethereum) {
-        const chainId = await web3.eth.getChainId();
-        console.log('zain chain', parseInt(chainId, 16))
-        // const network = await provider.getNetwork();
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-        setChainId(chainId);
+        const network = await provider.getNetwork();
+
+        setChainId(network?.chainId);
       }
     }
     getChainId();
@@ -297,10 +317,11 @@ console.log('decimals are',decimals)
   async function getChainIdLatest() {
     if (window.ethereum) {
       window.location.reload();
-      const chainId = await web3.eth.getChainId();
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
 
+      const network = await provider.getNetwork();
 
-      setChainId(chainId);
+      setChainId(network?.chainId);
     }
   }
 
@@ -419,7 +440,12 @@ console.log('decimals are',decimals)
         getReflection,
         ethDollarRate,
         getTotalUnClaimedReflection,
-        address
+        getFelixBalance,
+        getTotalClaimedReflection,
+        publishClaim,
+        address,
+        validateUnclaimed,
+        publishBurn,
       }}
     >
       {children}

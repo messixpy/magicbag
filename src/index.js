@@ -1,13 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import Head from './components/layout/head';
-import { StateContextProvider } from './context';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import Head from "./components/layout/head";
+import { StateContextProvider } from "./context";
+import reportWebVitals from "./reportWebVitals";
 import '@rainbow-me/rainbowkit/styles.css';
-import { WagmiConfig, configureChains, createConfig} from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { darkTheme } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -15,50 +19,49 @@ import {
   arbitrum,
   zora,
 } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-import {
-  RainbowKitProvider,
-  getDefaultWallets,
-  darkTheme,
-} from '@rainbow-me/rainbowkit';
+
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, zora],
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: 'y5GcR0NBerm6Zg38XyTQxyO9FMw_TY4I' }),
     publicProvider()
   ]
 );
-const projectId = 'deb365da247562ecce69b2a45d3b17bd' //change this
 
 const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
-  projectId: projectId,
+  appName: 'magicbag',
+  projectId: 'f12c6b58850adba8695a7dd824637355',
   chains
 });
+
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient
 })
-const root = ReactDOM.createRoot(document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
+
+
 
 
 
 root.render(
   <React.StrictMode>
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} theme={darkTheme()}>
+    <WagmiConfig config={wagmiConfig} >
+      <RainbowKitProvider chains={chains} theme={darkTheme()}  >
         <StateContextProvider>
           <Head />
-
 
           <App />
         </StateContextProvider>
       </RainbowKitProvider>
     </WagmiConfig>
-
   </React.StrictMode>
 );
 
