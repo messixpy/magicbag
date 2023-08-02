@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import twitter from "../../assets/icons/twitter.svg";
 import teleg from "../../assets/icons/teleg.svg";
 import discord from "../../assets/icons/discord.svg";
@@ -8,8 +7,6 @@ import circle from "../../assets/icons/circle.svg";
 import { useStateContext } from "../../context";
 
 const Slidebar = ({ children }) => {
-  //   const { openMenu } = useStateContext();
-
   const { showNav } = useStateContext();
 
   const menuItem = [
@@ -46,44 +43,67 @@ const Slidebar = ({ children }) => {
           <NavLink
             to={item.path}
             key={index}
-            className="link  "
-            activeclassName="active"
+            className="link"
+            activeClassName="active" // This specifies the class to apply to the active link
           >
-            <div className=" hover:text-yellow-500 link_text">
-              <p className="">{item.name}</p>
+            <div className="hover:text-yellow-500 link_text">
+              <p>{item.name}</p>
             </div>
           </NavLink>
         ))}
         <main>{children}</main>
         <div className="flex w-[100%] gap-2 items-end justify-start">
           <a
-          
             href="https://twitter.com/MagicBagERC"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={twitter}  width={32} hight={32} alt="twitter" className=" object-cover  " />
+            <img
+              src={twitter}
+              width={32}
+              height={32}
+              alt="twitter"
+              className="object-cover"
+            />
           </a>
           <a
             href="https://t.me/MagicBagERC"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={teleg} width={32} hight={32} alt="telegram" className=" object-cover " />
+            <img
+              src={teleg}
+              width={32}
+              height={32}
+              alt="telegram"
+              className="object-cover"
+            />
           </a>
           <a
             href="https://discord.gg/TWaRcjzS"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={discord} width={32} hight={32} alt="discord" className=" object-cover " />
+            <img
+              src={discord}
+              width={32}
+              height={32}
+              alt="discord"
+              className="object-cover"
+            />
           </a>
           <a
             href="https://medium.com/@MagicBagERC"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={circle} width={32} hight={32} alt="medium" className=" object-cover " />
+            <img
+              src={circle}
+              width={32}
+              height={32}
+              alt="medium"
+              className="object-cover"
+            />
           </a>
         </div>
       </div>
