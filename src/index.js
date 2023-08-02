@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from 'react-router-dom';
 import "./index.css";
 import App from "./App";
 import Head from "./components/layout/head";
+import Headline from "./components/layout/headline";
 import { StateContextProvider } from "./context";
 import reportWebVitals from "./reportWebVitals";
 import '@rainbow-me/rainbowkit/styles.css';
@@ -22,6 +24,7 @@ import {
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+
 
 
 
@@ -54,15 +57,18 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
+    <BrowserRouter>
     <WagmiConfig config={wagmiConfig} >
       <RainbowKitProvider chains={chains} theme={darkTheme()}  >
         <StateContextProvider>
           <Head />
+          <Headline />
 
           <App />
         </StateContextProvider>
       </RainbowKitProvider>
     </WagmiConfig>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
