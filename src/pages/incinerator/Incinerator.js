@@ -5,6 +5,7 @@ import burnvid from "../../assets/videos/burnvid.webm";
 import { useStateContext } from "../../context";
 import { useState } from "react";
 import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/SkeletonLoadingVideo"; 
+import Loader from "../../components/loader/Loader";
 
 const Incinerator = () => {
   const { showNav,decimals,publishBurn,address,felixDollarRate,ethDollarRate,getFelixBalance } = useStateContext();

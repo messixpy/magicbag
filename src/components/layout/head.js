@@ -4,6 +4,7 @@ import Button from "../buttons/Button";
 import FelixButton from "../buttons/FelixButton"
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useStateContext } from "../../context";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const [nav] = useState(false);
@@ -41,7 +42,7 @@ console.log('nave state is ',showNav)
     <div className=" w-[100%] mx-auto max-w-[1440px] flex flex-col justify-center items-center ">
       <div className="w-[93%]  flex justify-between items-center ">
         <div className="w-[112px] mt-2">
-          <img src={head} alt="heading img" />
+          <Link to={'/'}><img src={head}  alt="heading img" /></Link>
         </div>
         <div className=" flex items-center mt-3 gap-3">
           <FelixButton className="w-[80px] md:w-[40%]" label={"BUY FELIX"} />

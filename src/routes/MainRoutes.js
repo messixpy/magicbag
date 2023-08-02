@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,Navigate } from 'react-router-dom';
 import Slidebar from '../components/slidebar/Slidebar';
 
 // Lazy loading for pages
@@ -12,7 +12,7 @@ const Staking = lazy(() => import('../pages/staking/Staking'));
 const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Slidebar />} />
+      <Route path="/"element={<Navigate to="dashboard" />} />
       <Route path="/dashboard" element={<Suspense fallback={<div>Loading...</div>}><Dashboard /></Suspense>} />
       <Route path="/claim" element={<Suspense fallback={<div>Loading...</div>}><Claim /></Suspense>} />
       <Route path="/incinerator" element={<Suspense fallback={<div>Loading...</div>}><Incinerator /></Suspense>} />
