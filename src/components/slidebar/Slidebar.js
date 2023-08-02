@@ -7,7 +7,7 @@ import circle from "../../assets/icons/circle.svg";
 import { useStateContext } from "../../context";
 
 const Slidebar = ({ children }) => {
-  const { showNav } = useStateContext();
+  const { showNav, setShowNav } = useStateContext(); // Get the setShowNav function from the context
 
   const menuItem = [
     {
@@ -32,6 +32,13 @@ const Slidebar = ({ children }) => {
     },
   ];
 
+  const handleTabClick = () => {
+    // Close the sidebar on tab click for medium and small screens
+    if (window.innerWidth <= 1024) {
+      setShowNav(false);
+    }
+  };
+
   return (
     <div
       className={`${
@@ -45,6 +52,7 @@ const Slidebar = ({ children }) => {
             key={index}
             className="link"
             activeClassName="active" // This specifies the class to apply to the active link
+            onClick={handleTabClick} // Call the handleTabClick function when a tab is clicked
           >
             <div className="hover:text-yellow-500 link_text">
               <p>{item.name}</p>

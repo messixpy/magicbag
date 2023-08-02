@@ -107,7 +107,7 @@ body::after {
 /*Mobile View*/
 @media (min-width: 288px) and (max-width: 767px) {
   .subHeadingText {
-    color: #fed039;
+    color: #fff;
     font-family: Montserrat;
     font-size: 21px;
     font-style: normal;
