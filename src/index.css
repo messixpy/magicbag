@@ -92,7 +92,7 @@ body {
 body::after {
   content: ""; /* Required for the pseudo-element to appear */
   background: url("../src/assets/videos/background.gif");
-  opacity: 0.15; /* Set the desired opacity value (0.5 means 50% opacity) */
+  opacity: 0.35; /* Set the desired opacity value (0.5 means 50% opacity) */
   position: absolute;
   top: 0;
   left: 0;

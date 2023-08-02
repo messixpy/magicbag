@@ -4,6 +4,8 @@ import InciHeadline from "../../components/layout/inciHeadline";
 import burnvid from "../../assets/videos/burnvid.mp4";
 import { useStateContext } from "../../context";
 import { useState } from "react";
+import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/SkeletonLoadingVideo"; 
+
 const Incinerator = () => {
   const { showNav,decimals,publishBurn,address,felixDollarRate,ethDollarRate,getFelixBalance } = useStateContext();
 
@@ -160,18 +162,21 @@ const Incinerator = () => {
                 {gData.slice(1, 2).map((item, index) => (
                   <div
                     key={index}
-                    className="  items-start border-solid gap-1 hover:text-black text-white hover:bg-white border rounded-xl bg-transparent border-white p-4 my-2  "
+                    className="  items-start border-solid gap-1 group text-white hover:bg-white border rounded-xl bg-transparent border-white p-4 my-2  "
                   >
-                    <div className="flex justify-start mb-2 boxText hover:text-black">
+                    <div className="flex justify-start mb-2 boxText group-hover:text-black">
                       {item.heading1}
                     </div>
-                    <div className="text-lg ">{item.price1}</div>
-                    <div className="text-lg ">{item.price}</div>
+                    <div className="text-lg group-hover:text-black ">{item.price1}</div>
+                    <div className="text-lg group-hover:text-black ">{item.price}</div>
                   </div>
                 ))}
               </div>
             </div>
             <div className=" hidden lg:flex justify-center items-center  border border-white lg:ml-5 mt-1 h-fit w-[40%]">
+            {!burnvid ? (
+              <SkeletonLoadingVideo />
+            ) : (
               <video
                 src={burnvid}
                 width="700"
@@ -180,6 +185,7 @@ const Incinerator = () => {
                 autoPlay
                 loop
               />
+            )}
             </div>
           </div>
         </div>

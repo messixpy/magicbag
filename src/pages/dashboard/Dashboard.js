@@ -93,12 +93,12 @@ const Dashboard = () => {
                 {gData.slice(0, 2).map((item, index) => (
                   <div
                     key={index}
-                    className="  items-start border-solid  text-white  hover:bg-white hover:text-black border rounded-lg bg-transparent  p-1 my-1 w-[100%] lg:w-[70%]"
+                    className="  items-start border-solid  text-white  hover:bg-white group border rounded-lg bg-transparent  p-1 my-1 w-[100%] lg:w-[70%]"
                   >
-                    <div className="flex lg:ml-1 justify-start my-1 boxText  ">
+                    <div className="flex lg:ml-1 justify-start my-1 boxText group-hover:text-black ">
                       {item.heading1}
                     </div>
-                    <div className="text-lg lg:ml-1 ">{item.price}</div>
+                    <div className="text-lg lg:ml-1 group-hover:text-black">{item.price}</div>
                   </div>
                 ))}
               </div>
@@ -110,12 +110,12 @@ const Dashboard = () => {
                 {gData.slice(2, 6).map((item, index) => (
                   <div
                     key={index}
-                    className="  items-start border-solid  hover:text-black text-white hover:bg-white border rounded-lg bg-transparent border-white p-1 my-1 w-[100%] lg:w-[70%]"
+                    className="  items-start border-solid  group text-white hover:bg-white border rounded-lg bg-transparent border-white p-1 my-1 w-[100%] lg:w-[70%]"
                   >
-                    <div className="flex lg:ml-1 justify-start my-1 boxText ">
+                    <div className="flex lg:ml-1 justify-start my-1 boxText group-hover:text-black">
                       {item.heading1}
                     </div>
-                    <div className="text-lg lg:ml-1">{item.price}</div>
+                    <div className="text-lg lg:ml-1 group-hover:text-black">{item.price}</div>
                   </div>
                 ))}
               </div>
