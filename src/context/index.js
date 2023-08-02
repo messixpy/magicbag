@@ -319,11 +319,13 @@ export const StateContextProvider = ({ children }) => {
         .unclaimedReflection(address)
         .call();
 
+        notify("Validated Successfully")
       console.log("address of wallet is ", address);
 
       return result;
     } catch (error) {
       console.log(error);
+      errorNotify('Something went wrong')
     }
   }
 
