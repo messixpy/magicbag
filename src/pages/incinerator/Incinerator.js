@@ -9,7 +9,7 @@ import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/Skeleton
 const Incinerator = () => {
   const { showNav,decimals,publishBurn,address,felixDollarRate,ethDollarRate,getFelixBalance } = useStateContext();
 
-  const [inputValue, setInputValue] = useState("0");
+  const [inputValue, setInputValue] = useState("");
   const [loadingState, setLoadingState] = useState("");
   const [felixBalance, setFelixBalance] = useState("");
 
@@ -97,6 +97,7 @@ const Incinerator = () => {
     setLoadingState(true);
 
     const data = await publishBurn(convertedNumTokens);
+    setInputValue("")
     setLoadingState(false);
   };
 
@@ -138,6 +139,7 @@ const Incinerator = () => {
                         type="number"
                         placeholder="Amount "
                         onChange={handleInputChange}
+                        value={inputValue}
                         className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-14 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         autoComplete="off"
                       ></input>
