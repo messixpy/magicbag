@@ -235,7 +235,7 @@ const Claim = () => {
                       <input
                         type="number"
                         
-                        placeholder="Amount "
+                        placeholder="Address "
                         className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white h-10 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         autoComplete="off"
                       ></input>
