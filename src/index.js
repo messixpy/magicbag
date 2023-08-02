@@ -18,6 +18,7 @@ import {
   optimism,
   arbitrum,
   zora,
+  bscTestnet,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -25,7 +26,7 @@ import { publicProvider } from 'wagmi/providers/public';
 
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, zora],
+  [mainnet, polygon, optimism, arbitrum, zora,bscTestnet],
   [
     alchemyProvider({ apiKey: 'y5GcR0NBerm6Zg38XyTQxyO9FMw_TY4I' }),
     publicProvider()

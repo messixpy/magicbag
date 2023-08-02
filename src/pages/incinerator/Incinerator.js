@@ -9,7 +9,7 @@ import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/Skeleton
 const Incinerator = () => {
   const { showNav,decimals,publishBurn,address,felixDollarRate,ethDollarRate,getFelixBalance } = useStateContext();
 
-  const [inputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState("0");
   const [loadingState, setLoadingState] = useState("");
   const [felixBalance, setFelixBalance] = useState("");
 
@@ -46,6 +46,8 @@ const Incinerator = () => {
 
 
   const exponentialToDecimal = exponential => {
+
+    
     let decimal = exponential.toString().toLowerCase();
     if (decimal.includes('e+')) {
       const exponentialSplitted = decimal.split('e+');

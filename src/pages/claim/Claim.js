@@ -88,6 +88,13 @@ const Claim = () => {
     },
   ];
 
+  console.log('felix dollar rate',felixDollarRate)
+  console.log('felix balance',felixBalance)
+  console.log('decimals',decimals)
+
+  console.log('balanceeee',((felixDollarRate) * ((felixBalance) / 10 ** decimals)).toFixed(
+    9
+  ))
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };

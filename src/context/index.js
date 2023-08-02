@@ -57,7 +57,12 @@ const [ethDollarRate,setEthDollarRate]=useState(0)
   // contract address
   // this address will be used for main net
   // const contractAddress = '0x418AfEe14a1FD9c05c4df05e033f7C3d46aEb905';
-  const contractAddress = '0x8029d6984f700220472fc26269165764809d01a4';
+
+  //address for testing
+  // const contractAddress = '0x8029d6984f700220472fc26269165764809d01a4';
+  
+  
+  const contractAddress='0x5Af6e3F2be49F27a44ca9fEacf497140De75D5A2';
 
   // this is for testing, make sure to replace it before deploying
 
@@ -80,15 +85,15 @@ const [ethDollarRate,setEthDollarRate]=useState(0)
 
 console.log('address is ',address)
 
-  const getDecimals = async () => {
-    try {
-      const result = await contractInstance.methods.decimals().call();
-      console.log('decimals',result)
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const getDecimals = async () => {
+  try {
+    const result = await contractInstance.methods.decimals().call();
+    console.log('decimals from contract',result)
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 
@@ -100,7 +105,7 @@ console.log('address is ',address)
     };
 
     getDecimalCount()
-  }, [])
+  }, [getDecimals])
 
 
   
@@ -203,7 +208,7 @@ console.log('decimals are',decimals)
   const getBurned = async () => {
     try {
       const result = await contractInstance.methods.totalBurned().call();
-
+notify()
       return result;
     } catch (error) {
       console.log(error);
@@ -239,7 +244,7 @@ console.log('decimals are',decimals)
     try {
       const result = await contractInstance.methods.balanceOf(wallet).call();
 
-      return result;
+      return Number(result);
     } catch (error) {
       console.log(error);
     }
@@ -291,7 +296,7 @@ console.log('decimals are',decimals)
       const result = await contractInstance.methods
         .burn(val)
         .send({ from: address });
-
+console.log('burn result',result)
       notify()
 
       return result;
