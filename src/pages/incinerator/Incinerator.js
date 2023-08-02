@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Slidebar from "../../components/slidebar/Slidebar";
 import InciHeadline from "../../components/layout/inciHeadline";
-import burnvid from "../../assets/videos/burnvid.mp4";
+import burnvid from "../../assets/videos/burnvid.webm";
 import { useStateContext } from "../../context";
 import { useState } from "react";
 import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/SkeletonLoadingVideo"; 
@@ -132,11 +132,11 @@ const Incinerator = () => {
                       {item.heading1}
                     </div>
                     <div className=" flex lg:flex-row flex-col mb-2 gap-3 ">
-                      <input
+                    <input
                         type="number"
                         placeholder="Amount "
                         onChange={handleInputChange}
-                        className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-14"
+                        className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white  h-14 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         autoComplete="off"
                       ></input>
                       <div className="flex   lg:w-[22%] justify-between">
