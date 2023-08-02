@@ -5,6 +5,7 @@ import burnvid from "../../assets/videos/burnvid.webm";
 import { useStateContext } from "../../context";
 import { useState } from "react";
 import SkeletonLoadingVideo from "../../components/skeletonLoadingVideo/SkeletonLoadingVideo"; 
+import Loader from "../../components/loader/Loader";
 
 const Incinerator = () => {
   const { showNav,decimals,publishBurn,address,felixDollarRate,ethDollarRate,getFelixBalance } = useStateContext();
@@ -113,7 +114,7 @@ const Incinerator = () => {
   return (
     <>
       
-      <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center  ">
+    { loadingState?<Loader/>: <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center  ">
         <div className="flex flex-col lg:flex-row w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 ">
           <div className="lg:w-[18%]  ">
             <Slidebar />
@@ -199,7 +200,7 @@ const Incinerator = () => {
             <h className="text-md text-white font-semibold">2023</h>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 };

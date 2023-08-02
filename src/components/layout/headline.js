@@ -99,7 +99,14 @@ const Headline = () => {
     // Add more routes and corresponding texts as needed
   };
 
-  const texts = textsMap[location.pathname] || ["MAGIC BAG", "DASHBOARD"];
+  const texts = textsMap[location.pathname] || ["DASHBOARD",
+  "MAGIC BAG",
+  "DASHBOARD",
+  "MAGIC BAG",
+  "DASHBOARD",
+  "MAGIC BAG",
+  "DASHBOARD",
+  "MAGIC BAG",];
 
   if (isLoading) {
     return <SkeletonLoadingHeadline />;
