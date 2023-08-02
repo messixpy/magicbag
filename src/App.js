@@ -1,25 +1,22 @@
-import React, { useState, useEffect,createContext } from 'react';
-
-import { BrowserRouter } from 'react-router-dom';
-import MainRoutes from './routes/MainRoutes';
+import React, { useState, useEffect, createContext } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter } from "react-router-dom";
+import MainRoutes from "./routes/MainRoutes";
 
 const AppContext = createContext(null);
 function App() {
   const toggleNav = () => {
-    setShowNav(prevShowNav => !prevShowNav);
+    setShowNav((prevShowNav) => !prevShowNav);
   };
   const [showNav, setShowNav] = useState(false);
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
   return (
-    
-      <AppContext.Provider value={{ showNav, toggleNav }}>
-        <MainRoutes />
-      </AppContext.Provider>
-    
-
+    <AppContext.Provider value={{ showNav, toggleNav }}>
+      <MainRoutes />
+      <ToastContainer />
+    </AppContext.Provider>
   );
 }
 
