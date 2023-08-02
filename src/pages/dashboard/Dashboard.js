@@ -82,12 +82,12 @@ const Dashboard = () => {
   ];
   return (
     <>
-      <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center ">
-        <div className="flex flex-col lg:flex-row w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 ">
-          <div className="lg:w-[18%]  ">
+      <div style={{display:showNav&&'none'}} className=" flex  flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
+        {/* <div className="flex flex-col lg:flex-row  w-[92%] lg:w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 "> */}
+          {/* <div className="lg:w-[18%]  ">
             <Slidebar />
-          </div>
-          <div className={`${showNav ? "hidden" : "flex"} lg:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] lg:w-[70%]`}>
+          </div> */}
+          <div  className={`${showNav ? "hidden" : "flex"} lg:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] `}>
             <div className="flex flex-col px-5  w-[100%] lg:w-[50%]">
               <div className="grid  grid-flow-row grid-cols-1 ">
                 {gData.slice(0, 2).map((item, index) => (
@@ -120,18 +120,13 @@ const Dashboard = () => {
                 ))}
               </div>
             </div>
-            <div className=" hidden lg:flex items-center justify-center w-[40%]">
+            <div className=" hidden lg:flex items-center justify-center w-[35%]">
               <img className="w-[98%] h-[75%]" src={dashimg} alt="img" />
             </div>
           </div>{" "}
-        </div>
+        {/* </div> */}
 
-        <div className=" flex flex-col  items-center justify-center w-[100%] overflow-y-hidden ">
-          <div className="w-[94%] mt-[1px] flex justify-between items-center">
-            <h className="text-md text-white font-semibold">$FELIX DAPP</h>
-            <h className="text-md text-white font-semibold">2023</h>
-          </div>
-        </div>
+       
       </div>
     </>
   );

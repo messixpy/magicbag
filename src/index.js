@@ -24,6 +24,8 @@ import {
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import Slidebar from "./components/slidebar/Slidebar";
+import Endline from "./components/endline/endline";
 
 
 
@@ -63,8 +65,12 @@ root.render(
         <StateContextProvider>
           <Head />
           <Headline />
+          <div className="flex justify-between items-center mx-10  ">
 
+          <Slidebar/>
           <App />
+          </div>
+          <Endline/>
         </StateContextProvider>
       </RainbowKitProvider>
     </WagmiConfig>

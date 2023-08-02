@@ -113,16 +113,16 @@ const Incinerator = () => {
   return (
     <>
       
-      <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center  ">
-        <div className="flex flex-col lg:flex-row w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 ">
-          <div className="lg:w-[18%]  ">
+      <div style={{display:showNav&&'none'}}  className=" flex  flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
+        {/* <div className="flex flex-col lg:flex-row  w-[92%] lg:w-[100%]  lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 "> */}
+          {/* <div className="lg:w-[18%]  ">
             <Slidebar />
-          </div>
+          </div> */}
 
           <div
             className={`${
               showNav ? "hidden" : "flex"
-            } md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] lg:w-[70%]`}
+            } md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] `}
           >
             <div className="flex flex-col px-5  w-[100%] lg:w-[50%]">
               <div className="grid  grid-flow-row grid-cols-1 ">
@@ -166,7 +166,7 @@ const Incinerator = () => {
                 {gData.slice(1, 2).map((item, index) => (
                   <div
                     key={index}
-                    className="  items-start border-solid gap-1 group text-white hover:bg-white border rounded-xl bg-transparent border-white p-4 my-2  "
+                    className="  items-start border-solid gap-1 group text-white hover:bg-white border rounded-xl bg-transparent border-white p-2 my-2  "
                   >
                     <div className="flex justify-start mb-2 boxText group-hover:text-black">
                       {item.heading1}
@@ -177,7 +177,7 @@ const Incinerator = () => {
                 ))}
               </div>
             </div>
-            <div className=" hidden lg:flex justify-center items-center  border border-white lg:ml-5 mt-1 h-fit w-[40%]">
+            <div className=" hidden lg:flex justify-center items-center  border border-white lg:ml-5 mt-1 h-fit w-[35%] lg:mb-10 ">
             {!burnvid ? (
               <SkeletonLoadingVideo />
             ) : (
@@ -192,13 +192,8 @@ const Incinerator = () => {
             )}
             </div>
           </div>
-        </div>
-        <div className=" flex flex-col items-center mt-5 justify-center w-[100%] h-auto overflow-y-hidden ">
-          <div className="w-[94%] mt-[1px] flex justify-between items-center">
-            <h className="text-md text-white font-semibold">$FELIX DAPP</h>
-            <h className="text-md text-white font-semibold">2023</h>
-          </div>
-        </div>
+        {/* </div> */}
+       
       </div>
     </>
   );
