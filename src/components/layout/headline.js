@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import dashhead from "../../assets/images/dashhead.gif";
 
@@ -24,6 +25,7 @@ const SkeletonLoadingHeadline = () => {
 
 const Headline = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation(); // Get the current location (URL)
 
   // Simulate loading data here (you can replace this with actual data fetching)
   useEffect(() => {
@@ -32,7 +34,72 @@ const Headline = () => {
     }, 1000);
   }, []);
 
-  const texts = ["DASHBOARD", "MAGIC BAG", "DASHBOARD", "MAGIC BAG", "DASHBOARD", "MAGIC BAG"];
+  // You can map the texts array based on the route here or customize it as per your requirements
+  const textsMap = {
+    "/dashboard": [
+      "DASHBOARD",
+      "MAGIC BAG",
+      "DASHBOARD",
+      "MAGIC BAG",
+      "DASHBOARD",
+      "MAGIC BAG",
+      "DASHBOARD",
+      "MAGIC BAG",
+    ],
+    "/claim": [
+      "CLAIM",
+      "MAGIC BAG",
+      "CLAIM",
+      "MAGIC BAG",
+      "CLAIM",
+      "MAGIC BAG",
+      "CLAIM",
+      "MAGIC BAG",
+      "CLAIM",
+      "MAGIC BAG",
+      "CLAIM",
+      "MAGIC BAG",
+    ],
+    "/incinerator": [
+      "INCINERATOR",
+      "MAGIC BAG",
+      "INCINERATOR",
+      "MAGIC BAG",
+      "INCINERATOR",
+      "MAGIC BAG",
+      "INCINERATOR",
+      "MAGIC BAG",
+      "INCINERATOR",
+      "MAGIC BAG",
+    ],
+    "/treasury": [
+      "TREASURY",
+      "MAGIC BAG",
+      "TREASURY",
+      "MAGIC BAG",
+      "TREASURY",
+      "MAGIC BAG",
+      "TREASURY",
+      "MAGIC BAG",
+      "TREASURY",
+      "MAGIC BAG",
+    ],
+    "/staking": [
+      "STAKING",
+      "MAGIC BAG",
+      "STAKING",
+      "MAGIC BAG",
+      "STAKING",
+      "MAGIC BAG",
+      "STAKING",
+      "MAGIC BAG",
+      "STAKING",
+      "MAGIC BAG",
+    ],
+    // Add more routes and corresponding texts as needed
+  };
+
+  const texts = textsMap[location.pathname] || ["MAGIC BAG", "DASHBOARD"];
 
   if (isLoading) {
     return <SkeletonLoadingHeadline />;

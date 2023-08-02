@@ -14,11 +14,11 @@ function App() {
 
   }, []);
   return (
-    <BrowserRouter>
+    
       <AppContext.Provider value={{ showNav, toggleNav }}>
         <MainRoutes />
       </AppContext.Provider>
-    </BrowserRouter>
+    
 
   );
 }

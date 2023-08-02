@@ -109,7 +109,7 @@ const Incinerator = () => {
   },[getFelixBalance])
   return (
     <>
-      <InciHeadline />
+      
       <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center  ">
         <div className="flex flex-col lg:flex-row w-[100%] lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 ">
           <div className="lg:w-[18%]  ">

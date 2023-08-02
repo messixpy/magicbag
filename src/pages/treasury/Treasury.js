@@ -7,7 +7,7 @@ import { useStateContext } from "../../context";
 const Treasury = () => {
   const {showNav}=useStateContext();
   return (
-    <><TreasuryHeadline/>
+    <>
       <div className=" flex mx-auto max-w-[1440px]  flex-col vh-100  justify-center items-center   ">
         <div className="flex  w-[100%] justify-around  md:gap-3 p-1 ">
           <div className="lg:w-[18%]  ">
