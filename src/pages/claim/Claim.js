@@ -107,6 +107,7 @@ const Claim = () => {
     const data = await validateUnclaimed(inputValue);
     setValidatedData(data);
     console.log("validate data is ", data);
+    console.log('input value is',inputValue)
     setLoadingState(false);
   };
   useEffect(() => {
@@ -146,13 +147,13 @@ const Claim = () => {
   return (
     <>
       
-      <div style={{display:showNav&&'none'}}  className=" flex  flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
+     {loadingState?<Loader/>: <div style={{display:showNav&&'none'}}  className=" flex mx-auto max-w-[1440px]  flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
         {/* <div className="flex flex-col lg:flex-row  w-[92%] lg:w-[100%]  lg:justify-around justify-center md:gap-3 p-3 lg:p-1 "> */}
           {/* <div className="lg:w-[18%] ">
             <Slidebar />
           </div> */}
 
-          <div className={`${showNav ? "hidden" : "flex"} md:border-2 md:p-[0.2rem] md:border-white md:rounded-md w-[100%]  `}>
+          <div className={`${showNav ? "hidden" : "flex"} md:border-2 flex items-center md:p-[0.2rem] md:border-white md:rounded-md w-[100%]  `}>
             <div className="flex flex-col px-5 w-[100%] lg:w-[50%]">
               <div className="flex justify-normal gap-3 bg-transparent font-extrabold texy-md md:text-xl text-gray-600">
                 <button
@@ -187,7 +188,10 @@ const Claim = () => {
                         <div className="flex justify-start mb-1 boxText ">
                           {item.heading1}
                         </div>
-                        <div className="text-lg ">{item?.price}</div>
+                        <div className="text-lg ">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price}
+                  </div>
                         <div className="  ">
                           <ClaimButton
                             isDisabled={
@@ -211,17 +215,19 @@ const Claim = () => {
                     {gData.slice(1, 5).map((item, index) => (
                       <div
                         key={index}
-                        className="  items-start border-solid  group text-white hover:bg-white border rounded-lg bg-transparent border-white p-1 my-1 w-[100%] "
+                        className="  items-start border-solid  group text-white hover:bg-white border rounded-lg bg-transparent border-white pl-2 p-1 my-1 w-[100%] "
                       >
                         <div className="flex justify-start  boxText group-hover:text-black">
                           {item.heading1}
                         </div>
-                        <div className="text-lg group-hover:text-black">
-                          {item.price1}
-                        </div>
-                        <div className="text-lg group-hover:text-black">
-                          {item.price}
-                        </div>
+                        <div className="text-lg  group-hover:text-black">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price1}
+                  </div>
+                  <div className="text-lg group-hover:text-black">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price}
+                  </div>
                       </div>
                     ))}
                   </div>
@@ -242,7 +248,8 @@ const Claim = () => {
                           <input
                             type="text"
                             placeholder="Address "
-                            className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white h-10 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            onChange={handleInputChange}
+                            className="lg:w-[80%] px-5 font-medium justify-between placeholder-opacity-75 bg-transparent border rounded-md border-white text-white h-8 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                             autoComplete="off"
                           ></input>
                           <div className="flex   lg:w-[28%] justify-between">
@@ -264,7 +271,7 @@ const Claim = () => {
                           </div>
                         </div>
                         <div className="lg:flex hidden ">
-                          <h1 className="text-lg font-bold">
+                          <h1 className="text-md font-semibold">
                             {" "}
                             {validatedData / 10 ** 18} ETH
                           </h1>
@@ -284,12 +291,14 @@ const Claim = () => {
                         <div className="flex justify-start  boxText group-hover:text-black ">
                           {item.heading1}
                         </div>
-                        <div className="text-md group-hover:text-black ">
-                          {item.price1}
-                        </div>
-                        <div className="text-md group-hover:text-black">
-                          {item.price}
-                        </div>
+                        <div className="text-lg group-hover:text-black">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price1}
+                  </div>
+                  <div className="text-md group-hover:text-black">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price}
+                  </div>
                       </div>
                     ))}
                   </div>
@@ -314,7 +323,7 @@ const Claim = () => {
         {/* </div> */}
         
       </div>
-
+}
     </>
   );
 };

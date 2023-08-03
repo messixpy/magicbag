@@ -43,10 +43,10 @@ const Slidebar = ({ children }) => {
     <div
       className={`${
         showNav ? "flex" : "hidden"
-      } lg:flex self-stretch h-full w-[100%] lg:w-[18%]` }
+      } lg:flex self-stretch h-full w-[100%] lg:w-[20%] xl:w-[18%]` }
 
     >
-      <div className="flex flex-col gap-9 subHeadingText py-10 px-5  text-white w-[100%] xl:w-[100%] justify-center  border-white rounded-md border-2 ">
+      <div className="flex flex-col gap-9 subHeadingText py-10 px-5 mx-auto max-w-[1440px]  text-white w-[100%] xl:w-[100%] justify-center  border-white rounded-md border-2 ">
         {menuItem?.map((item, index) => (
           <NavLink
             to={item.path}

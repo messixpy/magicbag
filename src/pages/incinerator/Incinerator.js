@@ -114,7 +114,7 @@ const Incinerator = () => {
   return (
     <>
       
-      <div style={{display:showNav&&'none'}}  className=" flex  flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
+     {loadingState?<Loader/>: <div style={{display:showNav&&'none'}}  className=" flex   flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
         {/* <div className="flex flex-col lg:flex-row  w-[92%] lg:w-[100%]  lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 "> */}
           {/* <div className="lg:w-[18%]  ">
             <Slidebar />
@@ -123,9 +123,9 @@ const Incinerator = () => {
           <div
             className={`${
               showNav ? "hidden" : "flex"
-            } md:border-2  md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] `}
+            } md:border-2 flex items-center md:p-[0.2rem] md:border-white md:rounded-md  w-[100%] `}
           >
-            <div className="flex flex-col px-5  w-[100%] lg:w-[50%]">
+            <div className="flex flex-col px-5 py-14 w-[100%] lg:w-[50%]">
               <div className="grid  grid-flow-row grid-cols-1 ">
                 {gData.slice(0, 1).map((item, index) => (
                   <div
@@ -172,13 +172,19 @@ const Incinerator = () => {
                     <div className="flex justify-start mb-2 boxText group-hover:text-black">
                       {item.heading1}
                     </div>
-                    <div className="text-lg group-hover:text-black ">{item.price1}</div>
-                    <div className="text-lg group-hover:text-black ">{item.price}</div>
+                    <div className="text-lg  group-hover:text-black">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price1}
+                  </div>
+                  <div className="text-lg group-hover:text-black">
+                    {!address ? <div role="status" class="max-w-sm animate-pulse">
+    <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div></div> : item.price}
+                  </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className=" hidden lg:flex justify-center items-center  border border-white lg:ml-5 mt-1 h-fit w-[35%] lg:mb-10 ">
+            <div className="hidden lg:flex justify-center items-center border border-white h-fit mt-3  w-[35%]">
             {!burnvid ? (
               <SkeletonLoadingVideo />
             ) : (
@@ -196,6 +202,7 @@ const Incinerator = () => {
         {/* </div> */}
        
       </div>
+}
     </>
   );
 };

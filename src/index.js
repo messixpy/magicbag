@@ -31,7 +31,7 @@ import Endline from "./components/endline/endline";
 
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, zora,bscTestnet],
+  [mainnet],
   [
     alchemyProvider({ apiKey: 'y5GcR0NBerm6Zg38XyTQxyO9FMw_TY4I' }),
     publicProvider()
@@ -65,12 +65,13 @@ root.render(
         <StateContextProvider>
           <Head />
           <Headline />
-          <div className="flex justify-between items-center mx-10  ">
+          <div className="flex justify-between items-center px-10  mx-auto max-w-[1440px]  ">
 
           <Slidebar/>
           <App />
           </div>
-          <Endline/>
+          <div className="  mx-auto max-w-[1440px]" >
+          <Endline/></div>
         </StateContextProvider>
       </RainbowKitProvider>
     </WagmiConfig>

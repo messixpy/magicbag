@@ -22,10 +22,10 @@ export const StateContextProvider = ({ children }) => {
 
   const [decimals, setDecimals] = useState();
 
-  const [felixDollarRate, setFelixDollarRate] = useState(0);
-  const [felixMarketCap, setFelixMarketCap] = useState(0);
+  const [felixDollarRate, setFelixDollarRate] = useState(null);
+  const [felixMarketCap, setFelixMarketCap] = useState(null);
 
-  const [ethDollarRate, setEthDollarRate] = useState(0);
+  const [ethDollarRate, setEthDollarRate] = useState(null);
 
   const notify = (msg) => {
     toast.success(msg, {
@@ -58,20 +58,14 @@ export const StateContextProvider = ({ children }) => {
   //address for testing
   // const contractAddress = '0x8029d6984f700220472fc26269165764809d01a4';
 
-  const contractAddress = "0x5Af6e3F2be49F27a44ca9fEacf497140De75D5A2";
+  const contractAddress = "0x8029D6984f700220472FC26269165764809D01a4";
 
   // this is for testing, make sure to replace it before deploying
 
   // const contractAddress = '0x8F5A439ABac3F482049F6550949c8b4f848940fB';
 
-  const reflectionAddress = "0xe471a17005D23ce402b61E08Fb149948305cce27";
 
   const contractInstance = new web3.eth.Contract(contractABI, contractAddress);
-
-  const reflectionInstance = new web3.eth.Contract(
-    reflectionABI,
-    reflectionAddress
-  );
 
   console.log("contract instance is", contractInstance);
   const { address } = useAccount();
