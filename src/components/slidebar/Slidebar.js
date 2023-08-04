@@ -61,7 +61,7 @@ const Slidebar = ({ children }) => {
           </NavLink>
         ))}
         <main>{children}</main>
-        <div className="flex w-[100%] gap-2 items-end justify-start">
+        <div className="flex w-[100%] gap-2 items-center  justify-start">
           <a
             href="https://twitter.com/MagicBagERC"
             target="_blank"
@@ -85,7 +85,7 @@ const Slidebar = ({ children }) => {
               width={32}
               height={32}
               alt="telegram"
-              className="object-cover"
+              className="object-cover "
             />
           </a>
           <a

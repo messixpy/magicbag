@@ -430,6 +430,7 @@ export const StateContextProvider = ({ children }) => {
         address,
         validateUnclaimed,
         publishBurn,
+        errorNotify,
       }}
     >
       {children}

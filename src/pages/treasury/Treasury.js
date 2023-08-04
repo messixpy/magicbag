@@ -13,7 +13,7 @@ const Treasury = () => {
             <div className=" flex flex-col px-4 my-2 w-[95%] md:w-[75%] lg:w-[35%]">
               <img src={comingsoon} alt="comming soon" />
             </div>
-            <div className=" flex justify-center border border-white h-fit items-center my-4 w-[95%] md:w-[75%] lg:w-[35%]">
+            <div className=" flex justify-center border border-white h-fit lg:mr-[10%] items-center my-4 w-[95%] md:w-[75%] lg:w-[35%]">
               <video
                 src={treasury}
                 width="800"
