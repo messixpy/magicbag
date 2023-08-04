@@ -16,27 +16,7 @@ const Head = () => {
 
   };
 console.log('nave state is ',showNav)
-  // // Function to update the `nav` state based on screen size
-  // const updateNavOnResize = () => {
-  //   if (window.innerWidth <= 768) {
-  //     setNav(false); // Set nav to false for small screens
-  //   } else {
-  //     setNav(true); // Set nav to true for larger screens
-  //   }
-  // };
 
-  // // Listen for window resize events and update the `nav` state accordingly
-  // useEffect(() => {
-  //   updateNavOnResize(); // Call the function initially to set the initial state based on screen size
-
-  //   // Add event listener for resize events
-  //   window.addEventListener("resize", updateNavOnResize);
-
-  //   // Clean up the event listener when the component is unmounted
-  //   return () => {
-  //     window.removeEventListener("resize", updateNavOnResize);
-  //   };
-  // }, []);
 
   return (
     <div className=" w-[100%] mx-auto max-w-[1440px] flex flex-col justify-center items-center ">

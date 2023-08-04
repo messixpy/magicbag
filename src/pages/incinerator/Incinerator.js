@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import Slidebar from "../../components/slidebar/Slidebar";
-import InciHeadline from "../../components/layout/inciHeadline";
 import burnvid from "../../assets/videos/burnvid.webm";
 import { useStateContext } from "../../context";
 import { useState } from "react";
@@ -115,10 +113,7 @@ const Incinerator = () => {
     <>
       
      {loadingState?<Loader/>: <div style={{display:showNav&&'none'}}  className=" flex   flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%] ">
-        {/* <div className="flex flex-col lg:flex-row  w-[92%] lg:w-[100%]  lg:justify-around justify-center  md:gap-3 p-3 lg:p-1 "> */}
-          {/* <div className="lg:w-[18%]  ">
-            <Slidebar />
-          </div> */}
+        
 
           <div
             className={`${

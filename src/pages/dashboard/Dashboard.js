@@ -62,21 +62,28 @@ const Dashboard = () => {
     },
     {
       heading1: "CIRC SUPPLY",
-      price: `${circulatingSupply && circulatingSupply / 10 ** 18 } FELIX`,
+      price: circulatingSupply ? circulatingSupply / 10 ** 18 : 0,
     },
     {
       heading1: "TOTAL BURNED",
-      price: `${(burned && (burned / 10 ** 18).toFixed(5) )} FELIX`,
+      price: burned? (burned / 10 ** 18).toFixed(5):0,
     },
     {
       heading1: "ADDED LP",
-      price: `${(lp && (lp / 10 ** 18).toFixed(5) )} FELIX`,
+      price: lp ? (lp / 10 ** 18).toFixed(5):0,
     },
     {
       heading1: "TOTAL REFLECTIONS",
-      price: `${(reflection && (reflection / 10 ** 18).toFixed(7) )} ETH`,
+      price: reflection ? (reflection / 10 ** 18).toFixed(7):0,
     },
   ];
+
+  const placeholder = (
+    <div role="status" className="max-w-sm animate-pulse">
+      <div className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div>
+    </div>
+  );
+
   return (
     <>
       <div
@@ -84,9 +91,8 @@ const Dashboard = () => {
         className="flex mx-auto max-w-[1440px] flex-col vh-100 lg:ml-12 justify-center items-center w-[100%] lg:w-[78%]"
       >
         <div
-          className={`${
-            showNav ? "hidden" : "flex"
-          } lg:border-2 md:border-white md:rounded-md w-[100%]`}
+          className={`${showNav ? "hidden" : "flex"
+            } lg:border-2 md:border-white md:rounded-md w-[100%]`}
         >
           <div className="flex flex-col px-5 w-[100%] lg:w-[50%]">
             <div className="grid grid-flow-row grid-cols-1">
@@ -127,15 +133,11 @@ const Dashboard = () => {
                   <div className="flex lg:ml-1 justify-start my-1 boxText group-hover:text-black">
                     {item.heading1}
                   </div>
-                  <div className="text-lg lg:ml-1 group-hover:text-black">
-                    { !address ? (
-                      <div role="status" class="max-w-sm animate-pulse">
-                        <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 my-2"></div>
-                      </div>
-                    ) : (
-                      item.price
-                    )}
+                  <div key={index} className="text-lg lg:ml-1 group-hover:text-black">
+                    {!address || !getCirculatingSupply || !item.price ? placeholder : `${item.price} FELIX`}
                   </div>
+
+
                 </div>
               ))}
             </div>

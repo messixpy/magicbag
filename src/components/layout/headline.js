@@ -7,7 +7,7 @@ const SkeletonLoadingHeadline = () => {
   // Define the number of skeleton items to show
   const skeletonCount = 6;
   const skeletonItems = Array.from({ length: skeletonCount });
-
+//this section is for skeleton data
   return (
     <div className="w-[100%] mx-auto max-w-[1440px] py-2  flex items-center justify-center flex-col xl:px-10 ">
       <Marquee className="flex w-[90%] lg:h-[95px] px-0 border-2 border-white rounded-md items-center justify-center space-x-4">
