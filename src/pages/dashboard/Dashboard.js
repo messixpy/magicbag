@@ -66,15 +66,15 @@ const Dashboard = () => {
     },
     {
       heading1: "TOTAL BURNED",
-      price: burned? (burned / 10 ** 18).toFixed(5):0,
+      price: burned ? (burned / 10 ** 18).toFixed(5) : 0,
     },
     {
       heading1: "ADDED LP",
-      price: lp ? (lp / 10 ** 18).toFixed(5):0,
+      price: lp ? (lp / 10 ** 18).toFixed(5) : 0,
     },
     {
       heading1: "TOTAL REFLECTIONS",
-      price: reflection ? (reflection / 10 ** 18).toFixed(7):0,
+      price: reflection ? (reflection / 10 ** 18).toFixed(7) : 0,
     },
   ];
 
@@ -133,14 +133,15 @@ const Dashboard = () => {
                   <div className="flex lg:ml-1 justify-start my-1 boxText group-hover:text-black">
                     {item.heading1}
                   </div>
-                  <div key={index} className="text-lg lg:ml-1 group-hover:text-black">
-                    {!address || !getCirculatingSupply || !item.price ? placeholder : `${item.price} FELIX`}
+                  <div className="text-lg lg:ml-1 group-hover:text-black">
+                    {!address || !getCirculatingSupply || !item.price
+                      ? placeholder
+                      : `${item.price} ${index === 3? "ETH" : "FELIX"}`}
                   </div>
-
-
                 </div>
               ))}
             </div>
+
           </div>
           <div className="hidden lg:flex items-center justify-center w-[35%]">
             <img className="w-[98%] h-[75%]" src={dashimg} alt="img" />

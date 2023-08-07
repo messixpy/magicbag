@@ -5,12 +5,24 @@ import FelixButton from "../buttons/FelixButton"
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useStateContext } from "../../context";
 import { Link } from "react-router-dom";
+import { useSwitchNetwork, useNetwork } from "wagmi";
+import { disconnect } from "@wagmi/core";
+import { useAccount } from "wagmi";
+
 
 
 const Head = () => {
+  const account = useAccount();
   const [nav] = useState(false);
   const {showNav,setShowNav}=useStateContext();
-
+  const [currentChain, setCurrentChain] = useState("");
+  const { chain } = useNetwork();
+  const { chains, error, isLoading, pendingChainId, switchNetwork } =
+    useSwitchNetwork({
+      onSuccess(data) {
+        console.log("chain changed", data);
+      },
+    });
   // Function to handle the sidebar toggle
   const handleNav = () => {
     setShowNav(!showNav);
@@ -30,7 +42,21 @@ if(!address){
   handleShowToast()
 }
 },[address])
+useEffect(() => {
+  if (currentChain != 1 && account.isConnected) {
+    disconnect();
+    errorNotify("Please Connect with Ethereum Network");
+  }
+}, [currentChain]);
 
+
+
+
+  // getting chain id on run time
+
+  useEffect(() => {
+    setCurrentChain(chain?.id);
+  }, [chains, chain]);
   return (
    
     <div className=" w-[100%] mx-auto max-w-[1440px] flex flex-col justify-center items-center ">
